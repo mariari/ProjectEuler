@@ -1,0 +1,31 @@
+	Mon Jun 19 02:14 2017 Time and Allocation Profiling Report  (Final)
+
+	   collatz +RTS -hc -p -RTS
+
+	total time  =        4.71 secs   (4705 ticks @ 1000 us, 1 processor)
+	total alloc = 4,384,978,232 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE  %time %alloc
+
+collatz.f   Main     98.1   97.3
+maxCollatz  Main      1.1    2.3
+
+
+                                                         individual     inherited
+COST CENTRE    MODULE                  no.     entries  %time %alloc   %time %alloc
+
+MAIN           MAIN                     45           0    0.0    0.0   100.0  100.0
+ main          Main                     91           0    0.0    0.0     0.0    0.0
+ CAF           Main                     89           0    0.0    0.0   100.0  100.0
+  showsPrec    Main                     97           0    0.0    0.0     0.0    0.0
+  main         Main                     90           1    0.3    0.0   100.0  100.0
+   showsPrec   Main                     96           1    0.0    0.0     0.0    0.0
+   maxCollatz  Main                     92           1    1.1    2.3    99.7  100.0
+    len        Main                     95     1000000    0.1    0.0     0.1    0.0
+    collatz    Main                     93      500001    0.4    0.4    98.6   97.7
+     collatz.f Main                     94    69799886   98.1   97.3    98.1   97.3
+ CAF           GHC.Conc.Signal          84           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Encoding          83           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Handle.FD         82           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Handle.Text       81           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Encoding.Iconv    60           0    0.0    0.0     0.0    0.0
