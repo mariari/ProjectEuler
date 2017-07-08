@@ -31,8 +31,8 @@ longestPath' x y vec = recurse x y (0, [])
             accum  = (acc + loc, loc : path)
             loc    = vec V.! y V.! x
             rowLen = length (vec V.! y) - 1
-            up     = recurse x       (y - 1) accum
-            upleft = recurse (x - 1) (y - 1) accum
+            up     = recurse x       (y - 1) $! accum
+            upleft = recurse (x - 1) (y - 1) $! accum
 
 -- properly memorized
 longestPath :: Int -> Int -> V.Vector (V.Vector Integer) -> (Integer, [Integer])

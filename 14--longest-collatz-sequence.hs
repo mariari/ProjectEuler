@@ -23,8 +23,8 @@ collatz x = f x (Collatz x [] 0)
   where
     f 1 (Collatz val acc len) = Collatz val (1:acc) (1 + len)
     f x (Collatz val acc len)
-      | even x     = f (x `div` 2) (Collatz val (x:acc) (1 + len))
-      | otherwise  = f (3 * x + 1) (Collatz val (x:acc) (1 + len))
+      | even x     = f (x `div` 2) $! (Collatz val (x:acc) (1 + len))
+      | otherwise  = f (3 * x + 1) $! (Collatz val (x:acc) (1 + len))
 
 
 collatzMem :: MonadMemo Integer Collatz f => Integer -> f Collatz
