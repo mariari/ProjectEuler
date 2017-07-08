@@ -6,11 +6,12 @@ import Data.List
 file :: IO String
 file =  readFile "p022_names.txt"
 
-wsortedWords :: IO [String]
-sortedWords = (sort . (filter (/= '"') <$>) . splitOn ",") <$> file
+sortWords :: String -> [String]
+sortWords = sort . (filter (/= '"') <$>) . splitOn ","
 
-wordVal :: IO [Int]
-wordVal = (fmap . fmap) (sum . ((\x -> x - 64) . ord <$>)) sortedWords
+valWord :: [String] -> [Int]
+valWord = fmap (sum . ((\x -> x - 64) . ord <$>))
 
 
-main = wordVal >>= print . sum . zipWith (*) [1..] 
+main :: IO ()
+main = file >>= print . sum . zipWith (*) [1..] . valWord . sortWords
