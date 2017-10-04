@@ -7,11 +7,11 @@ file :: IO String
 file =  readFile "p022_names.txt"
 
 sortWords :: String -> [String]
-sortWords = sort . (filter (/= '"') <$>) . splitOn ","
+sortWords = sort . splitOn "," . filter (/= '"')
 
-valWord :: [String] -> [Int]
-valWord = fmap (sum . ((\x -> x - 64) . ord <$>))
+valWord :: String -> Int
+valWord = sum . fmap (subtract 64 . ord)
 
 
 main :: IO ()
-main = file >>= print . sum . zipWith (*) [1..] . valWord . sortWords
+main = file >>= print . sum . zipWith (*) [1..] . (valWord <$>) . sortWords
